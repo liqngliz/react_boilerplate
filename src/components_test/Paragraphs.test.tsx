@@ -1,7 +1,7 @@
 import { getAllByRole, render, screen } from "@testing-library/react";
 import { Paragraphs } from "../components/Paragraphs";
 
-test("renders a name", () => {
+test("renders paragraphs", () => {
     
   let para1 = {
         text : "this is first",
