@@ -1,35 +1,35 @@
-import { getAllByRole, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Paragraphs } from "../components/Paragraphs";
+import { v4 as uuidv4 } from 'uuid';
 
 test("renders paragraphs", () => {
     
   let para1 = {
+      uid:uuidv4(),
         text : "this is first",
         attributes: {
           className: "basic_para",
-          id: 1,
           role: "text_display"
         } 
     }
     
     let para2 = {
+        uid:uuidv4(),
         text : "this is second",
         attributes: {
           className: "basic_para",
-          id: 2,
           role: "text_display"
         } 
     }
     let texts = [para1, para2];
 
     let attribute = {
-      className: "basic_container",
-      id: "test_paraContainer"
+      className: "basic_container"
     };
 
     let paras = {texts}
 
-    let jsx = <Paragraphs attributes={attribute} content={texts} /> 
+    let jsx = <Paragraphs uid={uuidv4()} attributes={attribute} content={texts} /> 
     render(jsx);
     let anchorElements = screen.getAllByRole("text_display");
     expect(anchorElements[0]).toHaveTextContent(para1.text);

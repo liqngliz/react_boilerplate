@@ -1,17 +1,19 @@
 import { render, screen } from "@testing-library/react";
-import { Title, SubTitle, SubSubTitle, SubSubSubTitle } from "../components/Titles";
+import { H1, H2, H3, H4 } from "../components/Titles";
+import { v4 as uuidv4 } from 'uuid';
 
 test("renders a h1 title with attributes", () => {
   let main = {
-      text : "title",
+      uid:uuidv4(),
       attributes: {
         role: "contentMainTitle"
-      } 
+      },
+      text : "title"
     }
   let attr = {
     className: "test_class"
   }
-  render(<Title attributes={attr} content={main} />);
+  render(<H1 uid={uuidv4()} attributes={attr} content={main} />);
   const divElement = screen.getByRole("contentMainTitle");
   expect(divElement).toHaveTextContent("title");
   expect(divElement).toHaveAttribute("role", "contentMainTitle");
@@ -21,6 +23,7 @@ test("renders a h1 title with attributes", () => {
 
 test("renders a h2 title with attributes", () => {
   let main = {
+      uid:uuidv4(),
       text : "subtitle",
       attributes: {
         role: "contentSubTitle"
@@ -29,7 +32,7 @@ test("renders a h2 title with attributes", () => {
   let attr = {
     className: "test_class"
   }
-  render(<SubTitle attributes={attr} content={main} />);
+  render(<H2 uid={uuidv4()} attributes={attr} content={main} />);
   const divElement = screen.getByRole("contentSubTitle");
   expect(divElement).toHaveTextContent("subtitle");
   expect(divElement).toHaveAttribute("role", "contentSubTitle");
@@ -38,6 +41,7 @@ test("renders a h2 title with attributes", () => {
 
 test("renders a h3 title with attributes", () => {
   let main = {
+    uid:uuidv4(),
       text : "subsubTitle",
       attributes: {
         role: "contentSubSubTitle"
@@ -46,7 +50,7 @@ test("renders a h3 title with attributes", () => {
   let attr = {
     className: "test_class"
   }
-  render(<SubSubTitle attributes={attr} content={main} />);
+  render(<H3 uid={uuidv4()} attributes={attr} content={main} />);
   const divElement = screen.getByRole("contentSubSubTitle");
   expect(divElement).toHaveTextContent("subsubTitle");
   expect(divElement).toHaveAttribute("role", "contentSubSubTitle");
@@ -55,6 +59,7 @@ test("renders a h3 title with attributes", () => {
 
 test("renders a h4 title with attributes", () => {
   let main = {
+    uid:uuidv4(),
       text : "subsubsubtitle",
       attributes: {
         role: "contentSubSubSubTitle"
@@ -63,7 +68,7 @@ test("renders a h4 title with attributes", () => {
   let attr = {
     className: "test_class"
   }
-  render(<SubSubSubTitle attributes={attr} content={main} />);
+  render(<H4 uid={uuidv4()} attributes={attr} content={main} />);
   const divElement = screen.getByRole("contentSubSubSubTitle");
   expect(divElement).toHaveTextContent("subsubsubtitle");
   expect(divElement).toHaveAttribute("role", "contentSubSubSubTitle");
