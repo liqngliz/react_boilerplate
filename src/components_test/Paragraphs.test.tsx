@@ -49,7 +49,7 @@ test("renders paragraphs", () => {
     
     let para1 = {
         uid:uuidv4(),
-          content : <div>this is first</div>,
+          content : <span>this is first</span>,
           attributes: {
             className: "basic_para",
             role: "text_display"
@@ -77,7 +77,7 @@ test("renders paragraphs", () => {
       let anchorElements = screen.getAllByRole("text_display");
       expect(anchorElements[0]).toHaveTextContent("this is first");
       expect(anchorElements[0]).toHaveAttribute("class", para1.attributes.className);
-      expect(anchorElements[0].querySelector("div")?.outerHTML).toBe("<div>this is first</div>");
+      expect(anchorElements[0].querySelector("span")?.outerHTML).toBe("<span>this is first</span>");
   
       let doc = document.getElementsByClassName("basic_para");
       expect(doc.length).toBe(2);

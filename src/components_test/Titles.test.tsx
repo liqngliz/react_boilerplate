@@ -34,7 +34,6 @@ test("renders a h1 title with attributes", () => {
   const divElement = screen.getByRole("contentMainTitle");
   expect(divElement).toHaveTextContent("title");
   expect(divElement).toHaveAttribute("role", "contentMainTitle");
-  console.log(divElement.outerHTML);
   expect(divElement.outerHTML).toBe('<h1 role="contentMainTitle">title</h1>');
 });
 
