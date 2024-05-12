@@ -3,8 +3,9 @@ import {fireEvent, render, screen } from "@testing-library/react";
 
 test("handles onClick", () => {
     render(<Count/>);
-    const buttonElement = screen.getByRole("counter");
-    fireEvent.click(buttonElement);
-    fireEvent.click(buttonElement);
-    expect(buttonElement.textContent).toBe('2');
+    const counter = screen.getByRole("counter");
+    const button = screen.getByRole("add");
+    fireEvent.click(button);
+    fireEvent.click(button);
+    expect(counter.textContent).toBe('2');
 });
